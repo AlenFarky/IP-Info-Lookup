@@ -9,6 +9,8 @@ const ipP = document.getElementById("ipP");
 const ispP = document.getElementById("ispP");
 const countryP = document.getElementById("countryP");
 const localP = document.getElementById("localP");
+const mapPlaceholder = document.getElementById("mapPlaceholder");
+const mapElement = document.getElementById("map");
 
 // ======================
 // MAP
@@ -126,6 +128,19 @@ async function handler(e) {
       locationContainer.classList.add("active");
 
       if (result.data.lat && result.data.lng) {
+        if (mapPlaceholder) {
+          mapPlaceholder.classList.add("hidden");
+        }
+
+        if (mapElement) {
+          mapElement.classList.remove("map-hidden");
+          mapElement.classList.add("map-visible");
+        }
+
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 100);
+
         const coords = [result.data.lat, result.data.lng];
 
         map.setView(coords, 13);
