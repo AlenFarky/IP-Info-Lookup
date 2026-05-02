@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="css/404.css">
-  </head>
-  <body>
-    <div class="container">
-      <h2>Oops! Page doesn't exist.</h2>
-      <h1>404</h1>
-      <p>The page you are trying to visit is not existing.</p>
-      <a href="index.html">Take me back</a>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="css/404.css">
+</head>
+<body>
+  <main class="error-page">
+    <section class="error-card" aria-labelledby="error-title">
+      <a class="brand-link" href="index.html">IP Info Lookup</a>
+
+      <div class="error-badge">
+        <span class="material-icons-outlined">travel_explore</span>
+        Page not found
+      </div>
+
+      <h1 id="error-title">404</h1>
+      <h2>Oops! This page doesn’t exist.</h2>
+      <p>The page you’re trying to visit may have been moved, deleted or never existed.</p>
+
+      <div class="error-actions">
+        <a class="primary-btn" href="index.html">
+          <span class="material-icons-outlined">arrow_back</span>
+          Back to lookup
+        </a>
+      </div>
+    </section>
+  </main>
+
   <script src="js/inspect.js"></script>
+</body>
 </html>
