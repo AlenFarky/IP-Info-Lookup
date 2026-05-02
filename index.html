@@ -8,15 +8,14 @@
     <title>IP Info - Lookup</title>
     <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css?v4">
-  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="css/style.css?v5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/light.css" rel="stylesheet">
-  
-	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
@@ -26,30 +25,36 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <header>
-        <h1><a href="index.html" style="position: relative; text-decoration: none; top:25px;">IP Info Lookup</a></h1>
-		<h1>made by <a href="https://farky.xyz/" target="_blank" style="text-decoration: none">Farky</a></h1>
+        <div class="site-topbar">
+            <div class="brand">
+                <h1><a href="index.html">IP Info Lookup</a></h1>
+                <p class="credit">made by <a href="https://farky.xyz/" target="_blank" rel="noopener">Farky</a></p>
+            </div>
 
+            <div class="current-ip-card" aria-live="polite">
+                <span>Your IP:</span>
+                <strong id="ip" class="user-ip">Loading...</strong>
+            </div>
+        </div>
 
-        <h3 style="position: absolute; font-size:17px; top:7px; left:7px; color:#fff;">Your IP: </h3>
-        <h3 style="position: absolute; font-size:17px; top:29px; left:7px;" id="ip" class="user-ip">Loading...</h3>
+        <div class="lookup-panel">
+            <h2>Track any IP, domain or website</h2>
+            <p>Paste an IP address, domain or URL to reveal its location and ISP information.</p>
 
-      
+            <form class="input-container" id="ipForm">
+                <div class="cf-turnstile" data-size="flexible" data-sitekey="0x4AAAAAAA0sWMC-zAZfeMHj" data-callback="turnstileCallback"></div>
+                <input type="text" name="query" id="query" placeholder="e.g. 1.1.1.1, farky.xyz, https://farky.xyz" title="">
+                <button type="submit" aria-label="Search IP or domain">
+                    <span class="material-icons-outlined">navigate_next</span>
+                </button>
+            </form>
+        </div>
 
-        <form class="input-container" id="ipForm">
-			<div class="cf-turnstile" data-size="flexible" data-sitekey="0x4AAAAAAA0sWMC-zAZfeMHj" data-callback="turnstileCallback"></div>
-            <input type="text" name="query" id="query" placeholder="Enter IP address or domain" title="">
-            <button type="submit">
-                <span class="material-icons-outlined"> navigate_next </span>
-            </button>
-          
-        </form>
-      
-      
         <section class="location-container">
             <div>
                 <h3>IP</h3>
@@ -70,9 +75,14 @@
         </section>
     </header>
 
+    <main class="map-section">
+        <div class="map-placeholder" id="mapPlaceholder">
+            <span class="material-icons-outlined">public</span>
+            <h3>Map preview</h3>
+            <p>Enter an IP, domain or URL to reveal its location on the map.</p>
+        </div>
 
-    <main>
-        <div id="map"></div>
+        <div id="map" class="map-hidden"></div>
     </main>
 
     <div id="loader">
@@ -80,7 +90,7 @@
     </div>
     <script src="js/countryNames.js"></script>
     <script src="js/app.js?v5"></script>
-	<script src="js/inspect.js"></script>
+    <script src="js/inspect.js"></script>
     <script src="js/ip.js?v2"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
